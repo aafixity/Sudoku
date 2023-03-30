@@ -7,13 +7,12 @@
 
         public SudokuMixer(int[,] board)
         {
+            Sudoku.CheckSize(board);
             _board = board;
         }
 
         public void Flip()
         {
-            Sudoku.CheckSize(_board);
-
             int[,] temp = new int[Sudoku.BoardSize, Sudoku.BoardSize];
             for (int y = 0; y < Sudoku.BoardSize; y++)
                 for (int x = 0; x < Sudoku.BoardSize; x++)
@@ -24,7 +23,6 @@
 
         public void SwapRowsInSub(int firstRowY, int secondRowY)
         {
-            Sudoku.CheckSize(_board);
             Sudoku.CheckIndices(firstRowY, secondRowY);
 
             if (firstRowY / Sudoku.BoardSubSize != secondRowY / Sudoku.BoardSubSize)
@@ -73,7 +71,6 @@
 
         public void SwapRowOfSubsInColumn(int firstSubY, int secondSubY)
         {
-            Sudoku.CheckSize(_board);
             Sudoku.CheckSubIndex(firstSubY, secondSubY);
 
             int firstStartY = firstSubY * Sudoku.BoardSubSize;

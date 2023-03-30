@@ -5,6 +5,7 @@
         private readonly int[,] _board;
         public SudokuSolver(int[,] board)
         {
+            Sudoku.CheckSize(board);
             _board = board;
         }
 
@@ -110,8 +111,6 @@
 
         public bool Solve()
         {
-            Sudoku.CheckSize(_board);
-
             if (!FindFirstClearCell(out int y, out int x))
                 return true;
 
